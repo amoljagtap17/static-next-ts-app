@@ -10,7 +10,10 @@ export default function User() {
 
   const { data: user, error } = useSWR<IUser>(
     `https://jsonplaceholder.typicode.com/users/${id}`,
-    fetcher
+    fetcher,
+    {
+      dedupingInterval: 1000 * 60 * 60,
+    }
   )
 
   if (error) return <div>failed to load</div>
