@@ -1,19 +1,10 @@
 import axios from 'axios'
+import { InferGetStaticPropsType } from 'next'
+import { IUser } from 'types/user'
 
-interface IUser {
-  id: number
-  name: string
-  username: string
-  email: string
-  phone: string
-  website: string
-}
-
-interface IUserProps {
-  users: IUser[]
-}
-
-export default function Users({ users }: IUserProps) {
+export default function Users({
+  users,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   console.log('users', users)
 
   return (
@@ -29,8 +20,8 @@ export default function Users({ users }: IUserProps) {
 }
 
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const users = await (
+  // Call an external API endpoint to get users
+  const users = (
     await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
   ).data
 
