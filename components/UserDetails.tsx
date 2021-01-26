@@ -4,12 +4,14 @@ import { useRouter } from 'next/router'
 import { fetcher } from 'utils/fetcher'
 import { IUser } from 'types/user'
 
-export default function User() {
+export const UserDetails = () => {
   const router = useRouter()
   const { id } = router.query
 
+  console.log('id : ', id)
+
   const { data: user, error } = useSWR<IUser>(
-    `https://jsonplaceholder.typicode.com/users/${id}`,
+    id ? `https://jsonplaceholder.typicode.com/users/${id}` : null,
     fetcher,
     {
       dedupingInterval: 1000 * 60 * 60,

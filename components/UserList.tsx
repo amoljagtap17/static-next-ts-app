@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { fetcher } from 'utils/fetcher'
 import { IUser } from 'types/user'
 
-export default function Users() {
+export const UserList = () => {
   const { data: users, error } = useSWR<IUser[]>(
     'https://jsonplaceholder.typicode.com/users',
     fetcher,
@@ -17,13 +17,15 @@ export default function Users() {
 
   console.log('users : ', users)
 
+  /* `/users/${encodeURIComponent(user.id)}` */
+
   return (
     <>
       <h1>Users:</h1>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            <Link href={`/users/${encodeURIComponent(user.id)}`}>
+            <Link href={`/users?id=${encodeURIComponent(user.id)}`}>
               <a>{user.name}</a>
             </Link>
           </li>
