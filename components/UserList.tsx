@@ -21,16 +21,31 @@ export const UserList = () => {
 
   return (
     <>
-      <h1>Users:</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link href={`/users?id=${encodeURIComponent(user.id)}`}>
-              <a>{user.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <section className="hero is-dark">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Users List</h1>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <article className="panel is-link">
+            <p className="panel-heading">Users:</p>
+            <ul>
+              {users.map((user) => (
+                <li key={user.id}>
+                  <Link href={`/users?id=${encodeURIComponent(user.id)}`}>
+                    <a className="panel-block has-text-link-dark has-text-weight-bold p-3">
+                      {user.name}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </section>
     </>
   )
 }

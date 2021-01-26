@@ -25,15 +25,50 @@ export const UserDetails = () => {
 
   return (
     <>
-      <h1>User Details : </h1>
-      <p>Name : {user.name}</p>
-      <p>Username: {user.username}</p>
-      <p>Phone : {user.phone}</p>
-      <p>Email : {user.email}</p>
-      {/* <button onClick={() => router.push('/users')}>Home</button> */}
-      <Link href="/users">
-        <a>Go Home</a>
-      </Link>
+      <section className="hero is-dark">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">User Details</h1>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-4">
+              <div className="card">
+                <div className="card-image">
+                  <figure className="image is-4by3">
+                    <img
+                      src="https://bulma.io/images/placeholders/1280x960.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-content">
+                      <p className="title is-4">{user.name}</p>
+                      <p className="subtitle is-6">{user.username}</p>
+                    </div>
+                  </div>
+                  <div className="content">
+                    <p>{user.website}</p>
+                    <p>{user.phone}</p>
+                    <p>{user.email}</p>
+                    {/* <button onClick={() => router.push('/users')}>Home</button> */}
+                  </div>
+                </div>
+                <footer className="card-footer">
+                  <Link href="/users">
+                    <a className="card-footer-item">Go Home</a>
+                  </Link>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
